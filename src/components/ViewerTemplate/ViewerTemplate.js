@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 const ViewerTemplate = ({ viewer, menuNavigator }) => (
   <div className={cx('viewer-template')}>
     <header>
-      Plating
+      AXIOS PROJECT & REDUX - SAGA PROJECT
     </header>
     <div className={cx('viewer-wrapper')}>
       {viewer}

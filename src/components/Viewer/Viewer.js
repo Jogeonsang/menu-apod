@@ -4,9 +4,16 @@ import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
 const Viewer = ({mediaType, url, loading}) => {
+  if(!url) return null;
   return (
     <div className={cx('viewer')}>
-      
+      {
+        mediaType === 'image' ? (
+          <img onClick={() => window.open(url)} src = {url} alt = "menu"/>
+        ) : (
+          <div/>
+        )
+      }
     </div>
   );
 };
