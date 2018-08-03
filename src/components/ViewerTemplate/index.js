@@ -1,1 +1,1 @@
-export { default } from "./ViewerTemplate"
+export { default } from './ViewerTemplate';

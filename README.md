@@ -1,1 +1,1 @@
-# menu-apod
+# nasa-apod-viewer
