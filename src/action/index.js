@@ -9,3 +9,7 @@ export const next = (date) => ({
     type : types.NEXT,
     date
 });
+
+export const loading = () => ({
+    type : types.loading
+})
