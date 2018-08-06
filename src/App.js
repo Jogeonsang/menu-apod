@@ -4,9 +4,9 @@ import MenuNavigator from './components/MenuNavigator';
 import moment from 'moment';
 import Viewer from './components/Viewer/Viewer';
 
-import * as api from './api/apod';
+import * as getAPOD from './api/apod';
 import { connect } from 'react-redux';
-import { Actions } from '../src/redux/apod/action';
+import { data,prev,next} from '../src/redux/apod/action';
 
 class App extends Component {
   state = {
@@ -71,15 +71,15 @@ class App extends Component {
     }
   
   componentDidMount() {
-    //this.props.onData('2018-01-01');
+    this.props.onData('2018-08-06');
   }
 
   render() {
     const { url, mediaType, loading} = this.state;
-    const { handlePrev, handleNext, onData } = this;
+    const { handlePrev, handleNext} = this;
     return (
       <ViewerTemplate
-        menuNavigator={<MenuNavigator onPrev={handlePrev} onNext={handleNext} onData={onData}/>}
+        menuNavigator={<MenuNavigator onPrev={handlePrev} onNext={handleNext} />}
         viewer = {(
           <Viewer
             url={url}
@@ -94,9 +94,9 @@ const mapStateToProps = () => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onPrev : (date) => dispatch(Actions.prev(date)),
-  onNext : (date) => dispatch(Actions.next(date)),
-  onData : (date) => dispatch(Actions.data(date)),
+  onPrev: (date) => dispatch(prev(date)),
+  onNext: (date) => dispatch(next(date)),
+  onData: (date) => dispatch(data(date)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

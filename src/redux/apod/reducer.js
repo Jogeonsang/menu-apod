@@ -13,7 +13,6 @@ const initialState = {
     maxDate : null,
     date : null,
     urL : null,
-    mediaType : null
 }
 const apod = (state = initialState,action) => {
     // 래퍼런스 생성

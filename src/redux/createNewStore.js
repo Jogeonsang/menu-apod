@@ -1,7 +1,7 @@
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
-import reducer from '../redux/apod/reducer';
+import reducer from './reducers';
 import rootSaga from './sagas';
 /*
   eslint
