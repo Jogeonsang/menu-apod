@@ -1,9 +1,7 @@
-import { all, fork}  from 'redux-saga/effects';
+import { all } from 'redux-saga/effects';
 
-import apodRoot from './apod/sagas';
+import { watchData } from '../redux/apod/sagas';
 
-export default function* root(){
-    yield all([
-        apodRoot()
-    ]);
+export default function* apodRoot() {
+    yield all([watchData()]);
 }

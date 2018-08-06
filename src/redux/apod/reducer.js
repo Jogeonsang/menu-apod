@@ -1,11 +1,11 @@
-import { Actions } from './action';
+
 import { moment } from 'moment';
 
-const {
+import {
     PREV,
     NEXT,
     DATA
-} = Actions;
+} from './action';
 
 // 초기 상태
 const initialState = {
@@ -35,7 +35,7 @@ const apod = (state = initialState,action) => {
         case DATA:
             return {
                 state : {
-                date : Actions.DATA
+                date : DATA
                 }
             }
         default:

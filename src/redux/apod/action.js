@@ -1,24 +1,20 @@
 
-export const Actions = {
-    PREV : 'PREV',
-    NEXT : 'NEXT',
-
-    DATA : 'DATA',
-};
-
+export const PREV = 'PREV';
+export const NEXT = 'NEXT';
+export const DATA = 'DATA';
 // 액션 생성 함수
 
 export const prev = (date) => ({
-    type : Actions.PREV,
+    type : PREV,
     date
 });
 
 export const next = (date) => ({
-    type : Actions.NEXT,
+    type : NEXT,
     date
 });
 
 export const data = (date) => ({
-    type : Actions.DATA,
+    type : DATA,
     date
 })

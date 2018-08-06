@@ -1,19 +1,23 @@
 import { takeEvery, put, call, all, select } from 'redux-saga/effects';
 import { delay } from 'redux-saga';
 
-import * as getAPOD from '../../api/apod';
+import * as service from '../../api/apod';
 import {
-    Actions
+    PREV,
+    NEXT,
+    DATA,
+    data,
 } from './action';
 
 
 export function* loadData(action) {
-    console.log('!!')
     const { date } = action;
-    console.log(date)
+    
     try {
-        const response = yield call(getAPOD, date )
+        const response = yield call(service.getAPOD,{date} )
         console.log(response)
+        yield put(data(date))
+        console.log(data(date))
     }
     catch (error) {
         console.log(error);
@@ -21,9 +25,6 @@ export function* loadData(action) {
 }
 
 export function* watchData() {
-    yield takeEvery(Actions.DATA, loadData)
-}
-
-export default function* apodRoot() {
-    yield all([watchData()]);
+    yield takeEvery(DATA, loadData)
+    console.log(DATA)
 }
