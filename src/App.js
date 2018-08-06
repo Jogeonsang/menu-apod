@@ -4,7 +4,9 @@ import MenuNavigator from './components/MenuNavigator';
 import moment from 'moment';
 import Viewer from './components/Viewer/Viewer';
 
-import * as api from './lib/api';
+import * as api from './api/apod';
+import { connect } from 'react-redux';
+import { Actions } from '../src/redux/apod/action';
 
 class App extends Component {
   state = {
@@ -51,12 +53,12 @@ class App extends Component {
     });
   }
 
-  handlePrev = () => {
+ /* handlePrev = () => {
     const { date } = this.state;
     const prevDate = moment(date).subtract(1, 'days').format('YYYY-MM-DD');
     console.log(prevDate);
     this.getAPOD(prevDate);
-  }
+  } */
 
     handleNext = () => {
       const { date, maxDate } = this.state;
@@ -88,5 +90,12 @@ class App extends Component {
     );
   }
 }
+const mapStateToProps = (state) => ({
+});
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+  onPrev : (date) => dispatch(Actions.prev(date)),
+  onNext : (date) => dispatch(Actions.next(date))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

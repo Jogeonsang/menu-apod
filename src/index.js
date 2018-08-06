@@ -6,7 +6,7 @@ import './styles/base.scss';
 
 // Redux 불러오기
 import { createStore } from 'redux'
-import reducers from './reducers'
+import reducers from './redux/apod/reducer'
 import { Provider } from 'react-redux'
 
 //스토어 생성
@@ -18,7 +18,7 @@ const store = createStore(
 
 
 ReactDOM.render(
-    <Provider>
+    <Provider store = {store}>
         <App />
     </Provider>,
     document.getElementById('root'));
