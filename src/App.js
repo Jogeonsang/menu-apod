@@ -17,7 +17,7 @@ class App extends Component {
     mediaType : null
   }
 
-  getAPOD = async (date) => {
+  /* getAPOD = async (date) => {
     if (this.state.loading) return; // 이미 요청중이라면 무시
 
     // 로딩 상태 시작
@@ -38,11 +38,11 @@ class App extends Component {
       }
 
       //전달받을 데이터 넣어주기
-      this.setState({
+     /* this.setState({
         date: retrievedDate,
         mediaType,
-        url
-      });
+        url 
+      }); 
     }
     catch (e) {
       console.log(e);
@@ -51,14 +51,14 @@ class App extends Component {
     this.setState({
       loading:false
     });
-  }
-
- /* handlePrev = () => {
+  } */
+    
+    handlePrev = () => {
     const { date } = this.state;
     const prevDate = moment(date).subtract(1, 'days').format('YYYY-MM-DD');
     console.log(prevDate);
     this.getAPOD(prevDate);
-  } */
+  }
 
     handleNext = () => {
       const { date, maxDate } = this.state;
@@ -71,15 +71,15 @@ class App extends Component {
     }
   
   componentDidMount() {
-    this.getAPOD();
+    //this.props.onData('2018-01-01');
   }
 
   render() {
     const { url, mediaType, loading} = this.state;
-    const { handlePrev, handleNext } = this;
+    const { handlePrev, handleNext, onData } = this;
     return (
       <ViewerTemplate
-        menuNavigator={<MenuNavigator onPrev={handlePrev} onNext={handleNext}/>}
+        menuNavigator={<MenuNavigator onPrev={handlePrev} onNext={handleNext} onData={onData}/>}
         viewer = {(
           <Viewer
             url={url}
@@ -90,12 +90,13 @@ class App extends Component {
     );
   }
 }
-const mapStateToProps = (state) => ({
+const mapStateToProps = () => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onPrev : (date) => dispatch(Actions.prev(date)),
-  onNext : (date) => dispatch(Actions.next(date))
+  onNext : (date) => dispatch(Actions.next(date)),
+  onData : (date) => dispatch(Actions.data(date)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

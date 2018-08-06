@@ -3,7 +3,8 @@ import { moment } from 'moment';
 
 const {
     PREV,
-    NEXT
+    NEXT,
+    DATA
 } = Actions;
 
 // 초기 상태
@@ -16,10 +17,9 @@ const initialState = {
 }
 const apod = (state = initialState,action) => {
     // 래퍼런스 생성
-    const { date, prevDate,nextDate,maxDate } = state;
 
     switch (action.type) {
-        case PREV:
+        /*case PREV:
         console.log(prevDate)
             return {
                     prevDate : moment(date).subtract(1, 'days').format('YYYY-MM-DD')
@@ -32,7 +32,13 @@ const apod = (state = initialState,action) => {
                 ...state,
                 nextDate : moment(date).add(1, 'days').format('YYYY-MM-DD')
                     
+                } */
+        case DATA:
+            return {
+                state : {
+                date : Actions.DATA
                 }
+            }
         default:
            return state;
     }
