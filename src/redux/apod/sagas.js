@@ -5,8 +5,10 @@ import * as service from '../../api/apod';
 import {
     PREV,
     NEXT,
-    DATA,
+    DATA_REQUEST,
+    DATA_SUCCESS,
     data,
+    dataSuccess,
 } from './action';
 
 
@@ -15,9 +17,8 @@ export function* loadData(action) {
     
     try {
         const response = yield call(service.getAPOD,{date} )
-        console.log(response)
-        yield put(data(date))
-        console.log(data(date))
+        console.log(response.data)
+        yield put(dataSuccess(response.data))
     }
     catch (error) {
         console.log(error);
@@ -25,6 +26,6 @@ export function* loadData(action) {
 }
 
 export function* watchData() {
-    yield takeEvery(DATA, loadData)
-    console.log(DATA)
+    yield takeEvery(DATA_REQUEST, loadData)
+    console.log(DATA_REQUEST)
 }

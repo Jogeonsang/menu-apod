@@ -6,7 +6,7 @@ import Viewer from './components/Viewer/Viewer';
 
 import * as getAPOD from './api/apod';
 import { connect } from 'react-redux';
-import { data,prev,next} from '../src/redux/apod/action';
+import { dataRequest} from '../src/redux/apod/action';
 
 class App extends Component {
   state = {
@@ -94,9 +94,7 @@ const mapStateToProps = () => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onPrev: (date) => dispatch(prev(date)),
-  onNext: (date) => dispatch(next(date)),
-  onData: (date) => dispatch(data(date)),
+  onData: (date) => dispatch(dataRequest(date)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

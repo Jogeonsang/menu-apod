@@ -2,9 +2,7 @@
 import { moment } from 'moment';
 
 import {
-    PREV,
-    NEXT,
-    DATA
+    DATA_SUCCESS,
 } from './action';
 
 // 초기 상태
@@ -32,11 +30,10 @@ const apod = (state = initialState,action) => {
                 nextDate : moment(date).add(1, 'days').format('YYYY-MM-DD')
                     
                 } */
-        case DATA:
+        case DATA_SUCCESS:
             return {
-                state : {
-                date : DATA
-                }
+                ...state,
+                ...action.data
             }
         default:
            return state;
