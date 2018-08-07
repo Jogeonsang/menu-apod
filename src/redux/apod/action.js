@@ -9,7 +9,7 @@ export const dataRequest = (date) => ({
     date
 })
 
-export const dataSuccess =(data) =>({
+export const dataSuccess = (data) => ({
     type : DATA_SUCCESS,
     data
 })

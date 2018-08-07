@@ -3,8 +3,8 @@ import styles from './Viewer.scss';
 import classNames from 'classnames/bind';
 const cx = classNames.bind(styles);
 
-const Viewer = ({mediaType, url, loading}) => {
-  if(!url) return null;
+const Viewer = ({mediaType, url}) => {
+  console.log(url);
   return (
     <div className={cx('viewer')}>
       {

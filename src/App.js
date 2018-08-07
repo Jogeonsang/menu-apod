@@ -6,7 +6,8 @@ import Viewer from './components/Viewer/Viewer';
 
 import * as getAPOD from './api/apod';
 import { connect } from 'react-redux';
-import { dataRequest} from '../src/redux/apod/action';
+import { dataRequest, dataSuccess} from '../src/redux/apod/action';
+import { request } from 'https';
 
 class App extends Component {
   state = {
@@ -71,26 +72,28 @@ class App extends Component {
     }
   
   componentDidMount() {
-    this.props.onData('2018-08-06');
+    this.props.onData(dataSuccess);
   }
 
   render() {
-    const { url, mediaType, loading} = this.state;
+    const { data} = this.props;
     const { handlePrev, handleNext} = this;
+ 
     return (
       <ViewerTemplate
         menuNavigator={<MenuNavigator onPrev={handlePrev} onNext={handleNext} />}
         viewer = {(
           <Viewer
-            url={url}
-            mediaType={mediaType}
-            loading={loading}/>
+            url={data.url}
+            mediaType={data.media_type}
+           />
         )}
       />
     );
   }
 }
-const mapStateToProps = () => ({
+const mapStateToProps = (state) => ({
+  data : state.apod
 });
 
 const mapDispatchToProps = (dispatch) => ({
