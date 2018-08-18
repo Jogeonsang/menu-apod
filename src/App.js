@@ -78,7 +78,7 @@ class App extends Component {
   render() {
     const { data} = this.props;
     const { handlePrev, handleNext} = this;
- 
+    console.log(data)
     return (
       <ViewerTemplate
         menuNavigator={<MenuNavigator onPrev={handlePrev} onNext={handleNext} />}
@@ -95,7 +95,7 @@ class App extends Component {
 const mapStateToProps = (state) => ({
   data : state.apod
 });
-
+ 
 const mapDispatchToProps = (dispatch) => ({
   onData: (date) => dispatch(dataRequest(date)),
 })

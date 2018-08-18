@@ -19,6 +19,7 @@ export function* loadData(action) {
         const response = yield call(service.getAPOD,{date} )
         console.log(response.data)
         yield put(dataSuccess(response.data))
+        console.log(dataSuccess)
     }
     catch (error) {
         console.log(error);
